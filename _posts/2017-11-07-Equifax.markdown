@@ -27,6 +27,12 @@ If a content-type message is deliberately made up by an attacker, evaluation of 
 
 The flaw was patched by disabling the use of “LocalizedTextUtil.findText” function. Although it was patched on March 6, many websites didn’t get updates in time. Shortly after the update was available, the number of attacks exploiting this bug grew dramatically (Goodin, 2017). It seemed that many attackers were not aware of the bug until it was officially announced. And they reacted to it more quickly than programmers maintaining those vulnerable websites, if there were any maintainer at all.
 
+<div class="imgcap">
+<img src="/assets/attack_timeline.png">
+<div class="thecap">CVE-2017-5638 Exploitations Attempts (Goodin, 2017)</div>
+</div>
+
+
 - Security Flaw Summary
 
 During this incident, three things are noticeable. The first is the execution of content-type message. The content-type messages are essentially strings from users. They are not expected to be and should never be executed. Second, the OGNL expressions make it very convenient to manipulate Java objects. Meanwhile, they bring a number of vulnerabilities to the Struts framework (Munoz, 2014), the building block of numerous websites around the world. At last, the breach would not have happened without the failure to patch a two-month-old flaw. It is hard to imagine that such a company as Equifax is so ignorant of security.
