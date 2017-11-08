@@ -4,8 +4,8 @@ email:
 description: "Dairy of a Programmer"
 baseurl: ""
 url: "http://ssyifeng.github.io"
-twitter_username: Yifeng
-github_username:  Yifeng
+twitter_username: ssyifeng
+github_username:  ssyifeng
 
 # Build settings
 markdown: kramdown
