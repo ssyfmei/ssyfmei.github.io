@@ -1,9 +1,9 @@
 # Site settings
-title: Andrej Karpathy blog
+title: Yifeng Mei blog
 email: 
-description: "Musings of a Computer Scientist."
+description: "Daily Log of a Programmer."
 baseurl: ""
-url: "http://karpathy.github.io"
+url: "http://yfmei.github.io"
 twitter_username: karpathy
 github_username:  karpathy
 
