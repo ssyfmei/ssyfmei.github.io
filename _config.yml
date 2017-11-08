@@ -1,9 +1,9 @@
 # Site settings
 title: Yifeng Mei's blog
 email: 
-description: "Musings of a Computer Scientist."
+description: "Dairy of a Programmer"
 baseurl: ""
-url: "http://karpathy.github.io"
+url: "http://ssyifeng.github.io"
 twitter_username: Yifeng
 github_username:  Yifeng
 
