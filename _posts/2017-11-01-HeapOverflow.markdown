@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title:  "Buffer Overflow Attack"
-excerpt: "A Comprehensive Investigation of the Equifax Security Incident."
+excerpt: "A brief investigation of buffer overflow attacks."
 date:   2017-10-07 11:00:00
 mathjax: false
 ---
