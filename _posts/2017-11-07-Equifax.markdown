@@ -7,7 +7,7 @@ date:   2017-11-07 11:00:00
 mathjax: false
 ---
 
-- The Breach
+## The Breach
 
 On Sept 7, Equifax, one of the three biggest credit monitoring companies, announced a major data breach. Hackers broke into the company’s database and stole private information from 143 million people, nearly half of the adult population in America (Thomas, 2017).
 This is not the first major data breach in America. In 2013, information from one billion accounts was compromised during a cyber-attack on Yahoo. In 2014, at Yahoo again, another 500 million passwords and account information were exposed (Yahoo breaches n.d.).
@@ -17,7 +17,7 @@ The specific vulnerability of this breach lay in Apache Struts, a widely used fr
 
 Surprisingly, as a company carrying so much sensitive information, Equifax ignored the important patch. They said that this breach on their website began in mid-May, two months later after the patch was available (Goodin, 2017). Actually, since the publication of the patch, the flaw has been widely discussed and analyzed. Demonstration exploits are available on Github. Even nonexperts are able to download example code and perform RCE attack on websites using unpatched Apache Struts. Unfortunately, Equifax is one such site. It was like a fat rabbit striding in a dangerous woods that finally caught the attention of a hungry predator.
 
-- The Attack Scenario
+## The Attack Scenario
 
 When a client sends an HTTP request to a server running Apache Struts, a content-type specification is passed along with this request. If the content-type is not valid, an exception will be raised. Then a function named “LocalizedTextUtil.findText” will be called. It will use the invalid content-type to build error message for clients. During the process, the function will evaluate the supplied message. Anything within ${...} in this message will be evaluated as an Object Graph Navigation Library (OGNL) expression. If the OGNL expression is a function call, this expression will be executed (Sahu, 2017).
 
@@ -35,11 +35,11 @@ The flaw was patched by disabling the use of “LocalizedTextUtil.findText” fu
 </div>
 
 
-- Security Flaw Summary
+## Security Flaw Summary
 
 During this incident, three things are noticeable. The first is the execution of content-type message. The content-type messages are essentially strings from users. They are not expected to be and should never be executed. Second, the OGNL expressions make it very convenient to manipulate Java objects. Meanwhile, they bring a number of vulnerabilities to the Struts framework (Munoz, 2014), the building block of numerous websites around the world. At last, the breach would not have happened without the failure to patch a two-month-old flaw. It is hard to imagine that such a company as Equifax is so ignorant of security.
 
-- Bibliography
+## Bibliography
 
 [1] Goodin, D. (2017, Sept 13). Failure to patch two-month-old bug led to massive Equifax breach. Ars Technica. Retrieved from https://arstechnica.com
 
