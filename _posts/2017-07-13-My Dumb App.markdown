@@ -3,10 +3,10 @@ layout: post
 comments: true
 title:  "My Dumb App"
 excerpt: "A mini CRUD web application"
-date:   2018-07-13 12:00:00
+date:   2017-07-13 12:00:00
 mathjax: false
 ---
-### 07/13/218
+### 07/13/2017
 
 #### How to set up MySQL
 
