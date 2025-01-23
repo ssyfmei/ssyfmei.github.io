@@ -1,0 +1,50 @@
+---
+layout: post
+comments: true
+title:  "On Coding"
+excerpt: "Methodology"
+date:   2025-01-22 12:00:00
+mathjax: false
+---
+
+## Situation
+大型的代码具有高度的复杂性。复在逻辑上指系统的规模庞大，在物理上指原文件数量多，行数多。杂，指的是每一个子模块都有特异性。
+写代码的时候，常常感觉思路不清晰，不知道下一行该写什么:(
+
+具体来说容易陷入几种困境
+1. 越写越抽象，写到最后自己都没有信心了。完全不知道里面有多少错误。感觉像迷路了。
+2. 大概知道应该怎们写，但是无从下笔。迈不出第一步。
+3. 写的很慢。写一行，突然感觉别的地方错的要，回去改好几行。
+
+## Plan before start
+
+
+## Zoom in and out
+我的方案是，一开始不知道怎么进行全局计划，不知道怎么下笔的时候，就从最细节最容易的地方下手开始写。再复杂的逻辑，分解到最毫末，也是简单的。就从最简单的地方开始下手。
+但是不能一直陷于细节。每写30-40分钟应该停下来，zoom out，从更高的地方来重新审视这一段细节在全局中的作用。
+1. 有了细节的工作。全局的计划不在是纸上谈兵。对整个项目有了实实在在的触感后，全局计划会更加优化。
+2. 从细节中抽离出来，可以重新审视这个细节在全局中的作用，重新审视各个子模块之间的protocol是否合理。
+
+
+## DFS Approach
+解决和思考问题时。大脑对于细节的处理和DFS非常像。
+
+## Bugs in your code
+有过写代码经验的人都知道，没有测试就没有正确的代码。人脑的能力是有极限的。
+1. 人脑没有办法在同一时间塞入大量的资讯，进行无错误的处理。
+2. 人脑擅长载入较少的资讯，进行超级精细化的处理。
+3. 当其中的某一部分的内容迅速膨胀的时候。有两个选择，（1）进入分支，抛弃上下文。（2）压缩分支内的细节，专注上下文。
+
+
+
+
+When the second parameter is not zero, a semaphore can be used to synchronize access across different processes.
+
+
+    int sem_wait(sem_t *s);
+    // decrement the value of semaphore by one
+    // wait if value of semaphore s is negative
+    int sem_post(sem_t *s);
+    // increment the value of semaphore by one
+    // if there is one or more threads waiting, wake one
+
